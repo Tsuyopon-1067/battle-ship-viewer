@@ -13,3 +13,15 @@ export interface ShipType {
     maxHp: number;
   };
 }
+
+export const initialBattleTableData = {
+    width: 5,
+    height: 5,
+    board: [
+        [null, null, null, null, null],
+        [null, null, null, null, null],
+        [null, null, null, null, null],
+        [null, null, null, null, null],
+        [null, null, null, null, null]
+        ]
+}

@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { TableDataType, CellType } from './type';
+
+import { TableDataType, CellType, initialBattleTableData } from './type';
 import styles from './BattleTable.module.css';
 import submarineIcon from './submarine.svg';
-
-    //useEffect(() => {
-    //    fetch("http://localhost:50000/getjson/")
-    //        .then(response => response.json())
-    //        .then(jsonData => setTableData(jsonData))
-    //        .catch(error => console.error('Error fetching data:', error));
-    //}, []);
 
 function Cell({ cellData }: { cellData: CellType }) {
   if (cellData) {
@@ -42,18 +36,23 @@ function renderBoard(battleTableData: TableDataType) {
 
   return <table className={styles.table}>{rows}</table>;
 }
-function BattleTable({  }) {
-  const battleTableData: TableDataType = {
-    width: 5,
-    height: 5,
-    board: [
-      [null, {"name": "ship3", "hp": {"currentHp": 3, "maxHp": 3}}, null, null, null],
-      [null, null, null, null, null],
-      [null, null, null, null, null],
-      [null, {"name": "ship1", "hp": {"currentHp": 3, "maxHp": 3}}, null, {"name": "ship2", "hp": {"currentHp": 3, "maxHp": 3}}, null],
-      [{"name": "ship4", "hp": {"currentHp": 3, "maxHp": 3}}, null, null, null, null]
-    ]
-  };
+
+function BattleTable() {
+  const [battleTableData, setBattleTableData] = useState<TableDataType>(initialBattleTableData);
+  const longPolling = async () => {
+      try {
+        const response = await fetch("http://localhost:50000/getjson/");
+        const jsonData = await response.json();
+        setBattleTableData(jsonData);
+      } catch (error) {
+        console.error('ロングポーリングエラー:', error);
+      } finally {
+        setTimeout(longPolling, 1000);
+      }
+    };
+
+    longPolling();
+
   return (
     <div>
       {renderBoard(battleTableData)}

@@ -23,7 +23,6 @@ public class Sample {
             // 盤面データの登録
             BattleShipBoard board = register();
             battleShipViwer.registerBoard(board);
-            System.out.println(board.toJSonString());
         }
     }
 

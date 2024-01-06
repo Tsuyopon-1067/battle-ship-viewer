@@ -4,6 +4,41 @@
 
 .td {
     border: solid 1px;
-    width: 64pt;
-    height: 64pt;
+    width: 72pt;
+    height: 72pt;
+}
+
+.submarineInfo {
+    border: solid 0.0pt;
+    border-radius: 5pt;
+    width: 54pt;
+    height: 54pt;
+    margin: auto;
+    grid-template-rows: 1fr 18pt 18pt 1fr;
+    display: grid;
+    box-shadow: 1pt 1pt 2pt 0 rgba(0, 0, 0, 0.5);
+}
+
+.submarineInfoIcon {
+    height: 10pt;
+    margin: auto 2pt 0 auto;
+    display: inline-block;
+}
+
+.submarineInfoText {
+    height: 15pt;
+    font-size: 12pt;
+    margin: 0;
+    text-align: center;
+    display: inline-block;
+    grid-row: 2 / 3;
+}
+
+.submarineInfoTextHp {
+    height: 15pt;
+    font-size: 12pt;
+    margin: 0;
+    text-align: center;
+    display: inline-block;
+    grid-row: 3 / 4;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TableDataType, CellType } from './type';
 import styles from './BattleTable.module.css';
+import submarineIcon from './submarine.svg';
 
     //useEffect(() => {
     //    fetch("http://localhost:50000/getjson/")
@@ -13,8 +14,15 @@ function Cell({ cellData }: { cellData: CellType }) {
   if (cellData) {
     return (
       <td className={styles.td}>
-        {cellData.name}<br />
-        HP: {cellData.hp.currentHp}/{cellData.hp.maxHp}
+        <div className={styles.submarineInfo}>
+          <p className={styles.submarineInfoText}>
+            <img src={submarineIcon} className={styles.submarineInfoIcon} alt="icon" />
+            {cellData.name}
+          </p>
+          <p className={styles.submarineInfoTextHp}>
+              HP: {cellData.hp.currentHp}/{cellData.hp.maxHp}
+          </p>
+        </div>
       </td>
     );
   }

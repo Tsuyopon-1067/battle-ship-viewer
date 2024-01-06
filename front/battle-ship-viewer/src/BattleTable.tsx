@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
-import { TableDataType, CellType, initialBattleTableData } from './type';
+import { TableDataType, CellType } from './type';
 import styles from './BattleTable.module.css';
 import submarineIcon from './submarine.svg';
 
@@ -37,25 +35,10 @@ function renderBoard(battleTableData: TableDataType) {
   return <table className={styles.table}>{rows}</table>;
 }
 
-function BattleTable() {
-  const [battleTableData, setBattleTableData] = useState<TableDataType>(initialBattleTableData);
-  const longPolling = async () => {
-      try {
-        const response = await fetch("http://localhost:50000/getjson/");
-        const jsonData = await response.json();
-        setBattleTableData(jsonData);
-      } catch (error) {
-        console.error('ロングポーリングエラー:', error);
-      } finally {
-        setTimeout(longPolling, 2000);
-      }
-    };
-
-    longPolling();
-
+function BattleTable({ data }: { data: TableDataType }) {
   return (
     <div>
-      {renderBoard(battleTableData)}
+      {renderBoard(data)}
     </div>
   );
 }

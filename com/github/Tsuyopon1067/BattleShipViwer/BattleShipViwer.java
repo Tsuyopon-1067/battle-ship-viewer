@@ -9,7 +9,7 @@ import java.net.InetSocketAddress;
 
 public class BattleShipViwer implements Runnable {
     private boolean hasChanged = true;
-    String jsoString = "";
+    String jsonString = "";
 
     @Override
     public void run() {
@@ -26,11 +26,13 @@ public class BattleShipViwer implements Runnable {
     }
 
     public void registerBoard(BattleShipBoard board) {
-        jsoString = board.toJSonString();
+        jsonString = board.toJSonString();
         hasChanged = true;
     }
 
     class GetJsonHandler implements HttpHandler {
+        final String CLIENT_URL = "http://localhost:3000";
+
         @Override
         public void handle(HttpExchange t) throws IOException {
             while (!hasChanged) {
@@ -40,8 +42,9 @@ public class BattleShipViwer implements Runnable {
                     e.printStackTrace();
                 }
             }
-            String response = jsoString;
+            String response = jsonString;
             t.getResponseHeaders().set("Content-Type", "application/json");
+            t.getResponseHeaders().set("Access-Control-Allow-Origin", CLIENT_URL);
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());

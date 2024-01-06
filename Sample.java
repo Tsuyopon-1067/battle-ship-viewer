@@ -5,21 +5,25 @@ public class Sample {
     static final int HEIGHT = 5;
     static final int WIDTH = 5;
     static final int MAX_HP = 3;
+    static final int FREQUENCY_MS = 1000;
     public static void main(String... args) {
         // サーバーを起動
         BattleShipViwer battleShipViwer = new BattleShipViwer();
         Thread serverThread = new Thread(battleShipViwer);
         serverThread.start();
 
+        // ここでは例としてFREQUENCY_MS[ms]間隔でランダムな盤面データを登録している
         while (true) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(FREQUENCY_MS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 break;
             }
+            // 盤面データの登録
             BattleShipBoard board = register();
             battleShipViwer.registerBoard(board);
+            System.out.println(board.toJSonString());
         }
     }
 

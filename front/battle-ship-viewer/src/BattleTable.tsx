@@ -47,7 +47,7 @@ function BattleTable() {
       } catch (error) {
         console.error('ロングポーリングエラー:', error);
       } finally {
-        setTimeout(longPolling, 1000);
+        setTimeout(longPolling, 2000);
       }
     };
 

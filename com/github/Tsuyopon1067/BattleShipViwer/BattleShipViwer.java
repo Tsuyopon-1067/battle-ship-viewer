@@ -49,6 +49,7 @@ public class BattleShipViwer implements Runnable {
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
             os.close();
+            hasChanged = false;
         }
     }
 }

@@ -1,0 +1,13 @@
+.mainDiv {
+    margin: 20pt auto;
+    width: 398pt;
+}
+
+.controler {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16pt auto;
+    width: 100%;
+    height: 100%;
+}

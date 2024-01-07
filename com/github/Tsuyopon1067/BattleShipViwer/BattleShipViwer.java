@@ -8,15 +8,22 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
 public class BattleShipViwer implements Runnable {
+    private int port;
+    private String clientUrl;
     private boolean hasChanged = true;
-    String jsonString = "";
+    private String jsonString = "";
+
+    public BattleShipViwer(int port, String clientUrl) {
+        this.port = port;
+        this.clientUrl = clientUrl;
+    }
 
     @Override
     public void run() {
         System.err.println("Server starts.");
         try {
-            HttpServer server = HttpServer.create(new InetSocketAddress(50000), 0);
-            server.createContext("/getjson", new GetJsonHandler());
+            HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
+            server.createContext("/getjson", new GetJsonHandler(clientUrl));
             server.setExecutor(null);
             server.start();
             System.err.println("Server is running.");
@@ -31,7 +38,11 @@ public class BattleShipViwer implements Runnable {
     }
 
     class GetJsonHandler implements HttpHandler {
-        final String CLIENT_URL = "http://localhost:3000";
+        String clientUrl;
+
+        public GetJsonHandler(String clientUrl) {
+            this.clientUrl = clientUrl;
+        }
 
         @Override
         public void handle(HttpExchange t) throws IOException {
@@ -44,7 +55,7 @@ public class BattleShipViwer implements Runnable {
             }
             String response = jsonString;
             t.getResponseHeaders().set("Content-Type", "application/json");
-            t.getResponseHeaders().set("Access-Control-Allow-Origin", CLIENT_URL);
+            t.getResponseHeaders().set("Access-Control-Allow-Origin", clientUrl);
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());

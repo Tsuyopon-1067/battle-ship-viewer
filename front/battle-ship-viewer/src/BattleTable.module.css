@@ -8,6 +8,26 @@
     height: 72pt;
 }
 
+.tdColumnLabel {
+    background-color: #04CBB0;
+    color: black;
+    border: solid 1px black;
+    text-align: center;
+    padding: 2pt 0;
+}
+
+.tdRowLabel {
+    background-color: #04CBB0;
+    color: black;
+    border: solid 1px black;
+    text-align: center;
+    padding: 0 5pt;
+}
+
+.tdWhite {
+    border: solid 1px black;
+}
+
 .submarineInfo {
     border: solid 0.0pt;
     border-radius: 5pt;

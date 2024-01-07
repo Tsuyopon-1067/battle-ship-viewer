@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import HistorySlider from './HistorySlider';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import styles from './App.module.css';
 
 function App() {
   //const battleTableDataHistory:TableDataType[] = ([initialBattleTableData]);
@@ -48,11 +49,12 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {selectedHisotyrIndex}/{maxValue}
+    <div className={styles.mainDiv}>
       <BattleTable data={battleTableDataHistory[selectedHisotyrIndexRef.current]} />
-      <HistorySlider maxValue={maxValueRef.current} value={sliderValue} updateValue={updateSliderValue} />
-      <FormControlLabel control={<Switch onChange={changeSwitch} />} label="Auto Update" />
+      <div className={styles.controler}>
+        <HistorySlider maxValue={maxValueRef.current} value={sliderValue} updateValue={updateSliderValue} />
+        <FormControlLabel control={<Switch onChange={changeSwitch} />} label="Auto Update" />
+      </div>
     </div>
   );
 }

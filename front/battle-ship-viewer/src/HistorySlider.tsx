@@ -7,7 +7,7 @@ import Slider from '@mui/material/Slider';
 import MuiInput from '@mui/material/Input';
 
 const Input = styled(MuiInput)`
-  width: 42px;
+  width: 40pt;
 `;
 
 interface HisotrySliderProps {
@@ -42,9 +42,6 @@ export default function HistorySlider({maxValue, value, updateValue}: HisotrySli
 
   return (
     <Box sx={{ width: 350 }}>
-      <Typography id="input-slider" gutterBottom>
-        History
-      </Typography>
       <Grid container spacing={2} alignItems="center">
         <Grid item xs>
           <Slider
@@ -68,6 +65,7 @@ export default function HistorySlider({maxValue, value, updateValue}: HisotrySli
               'aria-labelledby': 'input-slider',
             }}
           />
+          <span style={{marginLeft: "5pt", fontSize: "13pt"}}>/ {maxValue}</span>
         </Grid>
       </Grid>
     </Box>

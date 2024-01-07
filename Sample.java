@@ -7,7 +7,7 @@ public class Sample {
     static final int MAX_HP = 3;
     static final int FREQUENCY_MS = 1000;
     static final int PORT = 50000;
-    static final String CLIENT_URL = "http://localhost:3000";
+    static final String CLIENT_URL = "http://localhost:50001";
 
     public static void main(String... args) {
         // サーバーを起動

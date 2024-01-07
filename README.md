@@ -8,6 +8,8 @@
 
 ## Usage
 
+
+
 ### 潜水艦ゲーム側
 詳細はSample.java説明で
 1. あらかじめmainメソッドがあるjavaファイルと同じ場所にcomフォルダを配置しておく．
@@ -46,6 +48,8 @@ javac -encoding UTF-8 HttpServer.java
 
 java HttpServer
 ```
+
+![Screen Shot](./readmeImg/description.png)
 
 ### Sample.java説明
 #### final変数

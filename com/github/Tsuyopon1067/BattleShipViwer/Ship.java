@@ -4,6 +4,11 @@ public class Ship {
     private String name;
     private Hp hp;
 
+    public Ship(String name, int maxHp, int currentHp) {
+        this.name = name;
+        this.hp = new Hp(maxHp, currentHp);
+    }
+
     public Ship(String name, int maxHp) {
         this.name = name;
         this.hp = new Hp(maxHp);
@@ -32,6 +37,11 @@ class Hp {
     public Hp(int maxHp) {
         this.maxHp = maxHp;
         this.currentHp = maxHp;
+    }
+
+    public Hp(int maxHp, int currentHp) {
+        this.maxHp = maxHp;
+        this.currentHp = currentHp;
     }
 
     public int getCurrentHp() {

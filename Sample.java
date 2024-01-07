@@ -36,10 +36,10 @@ public class Sample {
         // 3. BattleShipBoardインスタンスにShipインスタンスを登録 (setShipメソッドの引数はShipインスタンスとy座標とx座標)
         // 4. BattleShipViwerにBattleShipBoardインスタンスを渡す　(mainメソッドの中でやってる)
         BattleShipBoard res = new BattleShipBoard(HEIGHT, WIDTH);
-        Ship ship1 = new Ship("ship1", MAX_HP);
-        Ship ship2 = new Ship("ship2", MAX_HP);
-        Ship ship3 = new Ship("ship3", MAX_HP);
-        Ship ship4 = new Ship("ship4", MAX_HP);
+        Ship ship1 = new Ship("ship1", MAX_HP, 0);
+        Ship ship2 = new Ship("ship2", MAX_HP, 1);
+        Ship ship3 = new Ship("ship3", MAX_HP, 2);
+        Ship ship4 = new Ship("ship4", MAX_HP, 3);
 
         // ランダムな配置をする処理開始
         int[] point = new int[HEIGHT * WIDTH];
